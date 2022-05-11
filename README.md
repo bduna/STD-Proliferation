@@ -1,2 +1,3 @@
-# README.md
-This is a "read-me" markdown file.
+# STD PROLIFERATION SIMULATION
+This Python simulation simulates the spread of an infectious, sexually-transmitted
+disease throughout a population.
