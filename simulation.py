@@ -65,8 +65,8 @@ class Simulation():
         inflection_point_round = int(popt[0])
         infection_rate_asymptote = popt[1]
         plt.title('Population STD Proliferation')
-        plt.text(75, 0.25, f'Inflection Point: Round #{inflection_point_round}')
-        plt.text(75, 0.2, 'Infection Rate Asymptote: {:.1%}'.format(infection_rate_asymptote))
+        plt.text(90, 0.25, f'Inflection Point: Round #{inflection_point_round}')
+        plt.text(90, 0.2, 'Infection Rate Asymptote: {:.1%}'.format(infection_rate_asymptote))
         plt.scatter(x, y)
         plt.plot(x, logistic(x, *popt), 'r-')
         plt.xlabel('Round #')
