@@ -9,6 +9,12 @@ POPULATION_SIZE = 1000
 # per round of the simulation.
 NUMBER_OF_SEXUAL_ENCOUNTERS = 50
 
-# TODO: Comment on model parameters.
+# Each person's alpha parameter
+# will be uniformly distributed
+# on [0, MAX_ALPHA].
 MAX_ALPHA = 5
+
+# Each person's beta parameter
+# will be uniformly distributed
+# on [-MAX_ABSOLUTE_BETA, 0].
 MAX_ABSOLUTE_BETA = 5
