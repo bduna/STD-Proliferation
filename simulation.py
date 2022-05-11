@@ -11,9 +11,9 @@ class Simulation():
         self.number_of_rounds = number_of_rounds
         self.population = [Person() for _ in range(POPULATION_SIZE)]
         self.current_infection_rate = self.calculate_infection_rate()
+        self.infection_rate_history = [self.current_infection_rate]
         print('Infection Rate Growth...')
         print(self.current_infection_rate)
-        self.infection_rate_history = [self.current_infection_rate]
 
     def calculate_infection_rate(self):
         # Count infections to calculate infection rate.
