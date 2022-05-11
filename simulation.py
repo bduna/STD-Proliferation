@@ -75,7 +75,7 @@ class Simulation():
         plt.ylim(bottom=0)
         plt.axvline(inflection_point_round)
         plt.axhline(infection_rate_asymptote)
-        plt.savefig('infection_rate_plot.jpg')
+        plt.savefig('plots/infection_rate_plot.jpg')
         plt.show()
 
 if __name__ == '__main__':
