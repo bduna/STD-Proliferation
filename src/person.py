@@ -1,5 +1,5 @@
 from scipy.stats import bernoulli, uniform
-from config import *
+from src.config import *
 
 class Person():
 
