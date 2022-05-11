@@ -16,12 +16,8 @@ class Simulation():
         self.infection_rate_history = [self.current_infection_rate]
 
     def calculate_infection_rate(self):
-        # Iterate through population and count infections
-        # to calculate infection rate.
-        infected_count = 0
-        for p in self.population:
-            if p.is_infected:
-                infected_count += 1
+        # Count infections to calculate infection rate.
+        infected_count = sum(list(map(lambda p: p.is_infected, self.population)))
         infection_rate = infected_count/POPULATION_SIZE
         return infection_rate
 
