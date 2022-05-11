@@ -16,6 +16,8 @@ class Simulation():
         self.infection_rate_history = [self.current_infection_rate]
 
     def calculate_infection_rate(self):
+        # Iterate through population and count infections
+        # to calculate infection rate.
         infected_count = 0
         for p in self.population:
             if p.is_infected:
@@ -24,13 +26,17 @@ class Simulation():
         return infection_rate
 
     def sexual_encounter(self, partner_one, partner_two):
-        # one partner is infected with an STD and the other isn't
+        # One partner is infected with an STD and the other isn't.
         if ((partner_one.is_infected and not partner_two.is_infected) or 
             (partner_two.is_infected and not partner_one.is_infected)):
             if partner_one.is_infected:
+                # Infect partner two if current infection rate is below
+                # partner two's safe-sex threshold.
                 if self.current_infection_rate < partner_two.safe_sex_threshold:
                     partner_two.is_infected = True
             else:
+                # Infect partner one if current infection rate is below
+                # partner one's safe-sex threshold.
                 if partner_two.is_infected:
                     if self.current_infection_rate < partner_one.safe_sex_threshold:
                         partner_one.is_infected = True
@@ -66,7 +72,6 @@ class Simulation():
         plt.axhline(popt[1])
         plt.axhline(0)
         plt.show()
-
 
 if __name__ == '__main__':
     number_of_rounds = 200
