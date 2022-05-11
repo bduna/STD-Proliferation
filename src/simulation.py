@@ -12,8 +12,8 @@ class Simulation():
         self.population = [Person() for _ in range(POP_SIZE)]
         self.curr_infect_rate = self.calc_infect_rate()
         self.infect_rate_hist = [self.curr_infect_rate]
-        print('Infection Rate Growth...')
-        print(self.curr_infect_rate)
+        print('Infection Rate Growth Over Time...')
+        print('Initial Infection Rate: {:.2%}'.format(self.curr_infect_rate))
 
     def calc_infect_rate(self):
         # Count infections to calculate infection rate.
@@ -38,7 +38,7 @@ class Simulation():
                         partner_1.is_infected = True
 
 
-    def simulate_round(self):
+    def simulate_round(self, round_num):
         sexual_partners = list(np.random.choice(self.population, 
                                     size=2*NUM_SEXUAL_ENCOUNTERS,
                                     replace=False))
@@ -48,11 +48,11 @@ class Simulation():
             self.sexual_encounter(partner_1, partner_2)
         self.curr_infect_rate = self.calc_infect_rate()
         self.infect_rate_hist.append(self.curr_infect_rate)
-        print(self.curr_infect_rate)
+        print('Round #{}: {:.2%}'.format(round_num, self.curr_infect_rate))
 
     def run_simulation(self):
-        for _ in range(self.num_rounds):
-            self.simulate_round()
+        for i in range(self.num_rounds):
+            self.simulate_round(i+1)
 
     def plot_infect_rate_hist(self):
         x = np.arange(self.num_rounds+1)
