@@ -55,18 +55,26 @@ class Simulation():
             self.simulate_round()
 
     def plot_infection_rate_history(self):
-        x = np.array(range(self.number_of_rounds+1))
+        x = np.arange(self.number_of_rounds+1)
         y = np.array(self.infection_rate_history)
 
         def logistic(x, x_0, L, k):
             return L/(1+np.exp(-k*(x-x_0)))
 
         popt, pcov = curve_fit(logistic, x, y)
+        inflection_point_round = int(popt[0])
+        infection_rate_asymptote = popt[1]
+        plt.title('Population STD Proliferation')
+        plt.text(75, 0.25, f'Inflection Point: Round #{inflection_point_round}')
+        plt.text(75, 0.2, 'Infection Rate Asymptote: {:.1%}'.format(infection_rate_asymptote))
         plt.scatter(x, y)
         plt.plot(x, logistic(x, *popt), 'r-')
-        plt.axvline(popt[0])
-        plt.axhline(popt[1])
-        plt.axhline(0)
+        plt.xlabel('Round #')
+        plt.ylabel('% Population Infected')
+        plt.xlim(left=0)
+        plt.ylim(bottom=0)
+        plt.axvline(inflection_point_round)
+        plt.axhline(infection_rate_asymptote)
         plt.show()
 
 if __name__ == '__main__':
